@@ -11,10 +11,19 @@ if [[ "$USER" != "rookie" ]]; then
     read -p "Press Enter to continue or Ctrl+C to abort..."
 fi
 
+echo "Changing default shell to bash..."
+chsh -s /bin/bash
+
+echo "Cleaning up default directories..."
+cd "$USER_HOME"
+rm -rf Desktop Documents Music Pictures Public Templates Videos .config/user-dirs.*
+
 echo "Starting setup process..."
 
 echo "Creating configuration directories..."
-mkdir -p "$USER_HOME/.config/{i3,i3status,alacritty}"
+mkdir -p "$USER_HOME/.config/i3"
+mkdir -p "$USER_HOME/.config/i3status"
+mkdir -p "$USER_HOME/.config/alacritty"
 
 echo "Creating symlinks..."
 
@@ -90,12 +99,18 @@ else
     echo "/etc/default/grub not found, skipping GRUB configuration"
 fi
 
+echo "Configuring locales..."
+sudo dpkg-reconfigure locales
+
 echo ""
 echo "Setup complete!"
 echo "Summary:"
+echo "  - Default shell changed to bash"
+echo "  - Default directories cleaned up"
 echo "  - Dotfiles symlinks created in $USER_HOME"
 echo "  - Configuration directories created"
 echo "  - System packages installed"
 echo "  - GRUB timeout set to 0"
+echo "  - Locales reconfigured"
 echo ""
 echo "You can now reboot your system."
