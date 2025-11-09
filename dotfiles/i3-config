@@ -1,0 +1,72 @@
+set $mod Mod4
+set $term alacritty
+set $browser firefox
+set $menu dmenu_run -fn "Hack-13" -nb "#000000" -nf "#e5e5e5" -sb "#000000" -sf "#e5e5e5" -p ""
+
+bindsym $mod+1 workspace "1"
+bindsym $mod+2 workspace "2"
+bindsym $mod+3 workspace "3"
+bindsym $mod+4 workspace "4"
+bindsym $mod+Shift+1 move container to workspace "1"
+bindsym $mod+Shift+2 move container to workspace "2"
+bindsym $mod+Shift+3 move container to workspace "3"
+bindsym $mod+Shift+4 move container to workspace "4"
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+s exec --no-startup-id $term
+bindsym $mod+e exec --no-startup-id $menu
+bindsym $mod+b exec --no-startup-id $browser
+bindsym $mod+c kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+v split v
+bindsym $mod+Shift+v split h
+bindsym $mod+Shift+space floating toggle
+
+bindsym Print exec --no-startup-id sh -c 'mkdir -p ~/Downloads/screenshots && scrot -s ~/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png -e "xclip -selection clipboard -t image/png -i \$f"'
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exit
+bindsym $mod+Shift+p exec --no-startup-id i3lock -c 000000
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+bindsym $mod+minus gaps inner current minus 5
+bindsym $mod+equal gaps inner current plus 5
+bindsym $mod+Shift+minus gaps outer current minus 5
+bindsym $mod+Shift+equal gaps outer current plus 5
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+floating_modifier $mod
+new_window none
+new_float none
+gaps inner 5
+gaps outer 5
+
+bar {
+    status_command i3status -c ~/.config/i3status/config
+    position top
+    font pango:Hack 10
+}
