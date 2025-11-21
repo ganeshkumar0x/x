@@ -57,7 +57,7 @@ call plug#end()
 " Themes
 set termguicolors
 set background=dark
-colorscheme sorbet
+colorscheme retrobox
 
 " Transparency
 hi Normal        ctermbg=NONE guibg=NONE
@@ -93,4 +93,5 @@ let g:ctrlp_custom_ignore = {
       \ 'file': '\v\.(exe|so|dll)$',
       \ }
 let g:ctrlp_full_path = 1
+let g:ctrlp_show_hidden = 1
 nnoremap <F7> :CtrlP<CR>
