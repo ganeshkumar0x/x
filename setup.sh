@@ -83,7 +83,8 @@ sudo apt install -y \
     xfe \
     arandr \
     alacritty \
-    xinput
+    xinput \
+    unclutter
 
 echo "Configuring GRUB..."
 if [ -f /etc/default/grub ]; then
