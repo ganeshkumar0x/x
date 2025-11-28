@@ -57,7 +57,7 @@ call plug#end()
 " Themes
 set termguicolors
 set background=dark
-colorscheme retrobox
+colorscheme sorbet
 
 " Transparency
 hi Normal        ctermbg=NONE guibg=NONE

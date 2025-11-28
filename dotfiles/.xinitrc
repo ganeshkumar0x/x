@@ -9,6 +9,6 @@ xinput set-prop "DELL096A:00 04F3:30C4 Touchpad" "libinput Natural Scrolling Ena
 hsetroot -fill /home/rookie/.img.jpg
 dunst &
 picom --backend egl --vsync &
-unclutter -idle 1 -root &
+unclutter -idle 3 -root &
 export GTK_THEME=Adwaita:dark
 exec i3
