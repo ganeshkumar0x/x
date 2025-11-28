@@ -2,7 +2,7 @@
 syntax on
 filetype plugin indent on
 set ts=2 sts=2 sw=2 et ai si
-set rnu noshowmode ignorecase smartcase
+set rnu ignorecase smartcase
 
 " Enable Spell Checking
 set spell
@@ -34,9 +34,9 @@ autocmd FileType c nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && cc %
 autocmd FileType cpp nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && g++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result % -o compiled_code/%:r && compiled_code/%:r<CR>
 
 " Cursor Shape Settings for GUI Support
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-let &t_SR = "\e[4 q"
+" let &t_SI = "\e[6 q"
+" let &t_EI = "\e[2 q"
+" let &t_SR = "\e[4 q"
 set ttimeout ttimeoutlen=0 ttyfast
 
 " Backspace Behavior
