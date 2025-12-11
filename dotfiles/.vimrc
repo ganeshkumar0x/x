@@ -42,6 +42,9 @@ set ttimeout ttimeoutlen=0 ttyfast
 " Backspace Behavior
 set backspace=indent,eol,start
 
+" Soft Word Wrap (wrap long lines without breaking words)
+set wrap linebreak
+
 " Vim-Plug Bootstrap
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -52,6 +55,8 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'github/copilot.vim'
+Plug 'DanBradbury/copilot-chat.vim'
 call plug#end()
 
 " Themes
@@ -95,3 +100,8 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_full_path = 1
 let g:ctrlp_show_hidden = 1
 nnoremap <F7> :CtrlP<CR>
+
+" Copilot Chat Commands & Mappings
+command! CC CopilotChatOpen
+cabbrev cc CC
+vnoremap <Space>i <Plug>CopilotChatAddSelection
