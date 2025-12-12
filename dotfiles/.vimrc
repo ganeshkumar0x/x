@@ -14,6 +14,7 @@ set incsearch
 
 " Tabs and Window Management
 set showtabline=2
+set laststatus=0
 nnoremap <silent> <C-n> :tabnext<CR>
 nnoremap <silent> <C-p> :tabprev<CR>
 nnoremap <C-t> :tabnew<CR>
@@ -65,28 +66,10 @@ set background=dark
 colorscheme sorbet
 
 " Transparency
-hi Normal        ctermbg=NONE guibg=NONE
-hi NonText       ctermbg=NONE guibg=NONE
-hi LineNr        ctermbg=NONE guibg=NONE
-hi CursorLineNr  ctermbg=NONE guibg=NONE
-hi SignColumn    ctermbg=NONE guibg=NONE
-hi VertSplit     ctermbg=NONE guibg=NONE
-hi StatusLine    ctermbg=NONE guibg=NONE
-hi StatusLineNC  ctermbg=NONE guibg=NONE
-hi TabLine       ctermbg=NONE guibg=NONE
-hi TabLineFill   ctermbg=NONE guibg=NONE
-" hi TabLineSel    ctermbg=NONE guibg=NONE
-hi Folded        ctermbg=NONE guibg=NONE
-" hi Pmenu         ctermbg=NONE guibg=NONE
-" hi PmenuSel      ctermbg=NONE guibg=NONE
-" hi PmenuSbar     ctermbg=NONE guibg=NONE
-" hi PmenuThumb    ctermbg=NONE guibg=NONE
-hi NormalFloat   ctermbg=NONE guibg=NONE
-hi FloatBorder   ctermbg=NONE guibg=NONE
-" hi Visual        ctermbg=NONE guibg=NONE
-hi CursorLine    ctermbg=NONE guibg=NONE
-hi IncSearch     ctermbg=NONE guibg=NONE
-hi Search        ctermbg=NONE guibg=NONE
+hi clear Normal
+hi clear NonText
+hi Normal  ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE
 
 " Trailing Whitespace Removal
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>
