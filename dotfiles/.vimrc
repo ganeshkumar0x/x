@@ -2,15 +2,22 @@
 syntax on
 filetype plugin indent on
 set ts=4 sts=4 sw=4 et ai si
-set rnu ignorecase smartcase
+set ignorecase smartcase
+
+" Line Number Settings
+set number
+set relativenumber
+set cursorline
+set cursorlineopt=number
 
 " Enable Spell Checking
-set spell
-set spelllang=en_us
+" set spell
+" set spelllang=en_us
 
-" Disable search highlight but keep incremental search
-set nohlsearch
+" Search Settings
+set hlsearch
 set incsearch
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
 " Tabs and Window Management
 set showtabline=2
@@ -20,13 +27,13 @@ nnoremap <silent> <C-p> :tabprev<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 
-" Clipboard and select-all mappings
+" Clipboard Mappings
 nnoremap ^ ggVG
 vnoremap <Space>y "+y
 nnoremap <Space>p "+P
 
 " Mouse Settings
-set mouse=a mousehide
+set mouse=
 
 " Auto-Save and Code Run Bindings
 set autowrite
@@ -34,33 +41,31 @@ autocmd FileType python nnoremap <F5> :w<CR>:!clear; python3 %<CR>
 autocmd FileType c nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && cc % -o compiled_code/%:r && compiled_code/%:r<CR>
 autocmd FileType cpp nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && g++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result % -o compiled_code/%:r && compiled_code/%:r<CR>
 
-" Cursor Shape Settings for GUI Support
-" let &t_SI = "\e[6 q"
-" let &t_EI = "\e[2 q"
-" let &t_SR = "\e[4 q"
+" Cursor Settings
 set ttimeout ttimeoutlen=0 ttyfast
 
 " Backspace Behavior
 set backspace=indent,eol,start
 
-" Soft Word Wrap (wrap long lines without breaking words)
+" Text Wrapping
 set wrap linebreak
 
-" Vim-Plug Bootstrap
+" Plugin Manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'github/copilot.vim'
 Plug 'DanBradbury/copilot-chat.vim'
 call plug#end()
 
-" Themes
+" Theme and Colors
 set termguicolors
 set background=dark
 colorscheme sorbet
@@ -71,10 +76,10 @@ hi clear NonText
 hi Normal  ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE
 
-" Trailing Whitespace Removal
+" Utility Mappings
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>
 
-" CtrlP Settings
+" CtrlP Configuration
 let g:ctrlp_map = '<F7>'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
@@ -84,7 +89,7 @@ let g:ctrlp_full_path = 1
 let g:ctrlp_show_hidden = 1
 nnoremap <F7> :CtrlP<CR>
 
-" Copilot Chat Commands & Mappings
+" Copilot Integration
 command! CC CopilotChatOpen
 cabbrev cc CC
 vnoremap <Space>i <Plug>CopilotChatAddSelection
