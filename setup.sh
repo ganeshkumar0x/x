@@ -63,6 +63,7 @@ sudo apt install -y \
     curl \
     dmenu \
     dunst \
+    fd-find \
     firefox-esr \
     fonts-hack \
     fzf \
@@ -101,7 +102,13 @@ else
 fi
 
 echo "Configuring locales..."
-sudo dpkg-reconfigure locales
+read -p "Do you want to configure locales? (y/n): " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sudo dpkg-reconfigure locales
+else
+    echo "Skipping locales configuration"
+fi
 
 echo ""
 echo "Setup complete!"
@@ -110,8 +117,7 @@ echo "  - Default shell changed to bash"
 echo "  - Default directories cleaned up"
 echo "  - Dotfiles symlinks created in $USER_HOME"
 echo "  - Configuration directories created"
-echo "  - System packages installed"
+echo "  - System packages installed (including fzf and fd-find)"
 echo "  - GRUB timeout set to 0"
-echo "  - Locales reconfigured"
 echo ""
 echo "You can now reboot your system."
