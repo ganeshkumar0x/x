@@ -78,7 +78,7 @@ hi NonText ctermbg=NONE guibg=NONE
 
 " Utility Mappings
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>
-nnoremap <F7> :call fzf#run({'source': 'fdfind --type f --hidden --exclude .git --exclude .cache --strip-cwd-prefix', 'sink': 'edit', 'dir': '~'})<CR>
+nnoremap <F7> :FZF ~<CR>
 
 " Copilot Integration
 command! CC CopilotChatOpen
