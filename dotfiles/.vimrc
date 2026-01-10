@@ -33,7 +33,7 @@ vnoremap <Space>y "+y
 nnoremap <Space>p "+P
 
 " Mouse Settings
-set mouse=
+set mouse=a
 
 " Auto-Save and Code Run Bindings
 set autowrite
@@ -57,8 +57,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug '/usr/share/doc/fzf/examples'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'github/copilot.vim'
@@ -68,7 +68,7 @@ call plug#end()
 " Theme and Colors
 set termguicolors
 set background=dark
-colorscheme sorbet
+colorscheme habamax
 
 " Transparency
 hi clear Normal
@@ -78,16 +78,7 @@ hi NonText ctermbg=NONE guibg=NONE
 
 " Utility Mappings
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>
-
-" CtrlP Configuration
-let g:ctrlp_map = '<F7>'
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ }
-let g:ctrlp_full_path = 1
-let g:ctrlp_show_hidden = 1
-nnoremap <F7> :CtrlP<CR>
+nnoremap <F7> :call fzf#run({'source': 'fdfind --type f --hidden --exclude .git --exclude .cache --strip-cwd-prefix', 'sink': 'edit', 'dir': '~'})<CR>
 
 " Copilot Integration
 command! CC CopilotChatOpen
