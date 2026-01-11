@@ -68,13 +68,7 @@ call plug#end()
 " Theme and Colors
 set termguicolors
 set background=dark
-colorscheme habamax
-
-" Transparency
-hi clear Normal
-hi clear NonText
-hi Normal  ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE
+colorscheme retrobox
 
 " Utility Mappings
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>

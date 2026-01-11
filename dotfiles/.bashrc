@@ -22,5 +22,8 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
 # Welcome message
 echo -e "Do one thing and do it well.\nUNIX Philosophy"
