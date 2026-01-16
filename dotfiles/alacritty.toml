@@ -1,62 +1,46 @@
 [colors]
 draw_bold_text_with_bright_colors = true
+cursor = { text = "#1c1c1c", cursor = "#fbf1c7" }
+selection = { text = "#ebdbb2", background = "#2a405a" }
 
 [colors.primary]
-background = '#1c1c1c'
-foreground = '#ebdbb2'
+background = "#1c1c1c"
+foreground = "#ebdbb2"
 
 [colors.normal]
-black = '#1c1c1c'
-red = '#cc241d'
-green = '#98971a'
-yellow = '#d79921'
-blue = '#458588'
-magenta = '#b16286'
-cyan = '#689d6a'
-white = '#a89984'
+black = "#1c1c1c"
+red = "#cc241d"
+green = "#98971a"
+yellow = "#d79921"
+blue = "#458588"
+magenta = "#b16286"
+cyan = "#689d6a"
+white = "#a89984"
 
 [colors.bright]
-black = '#928374'
-red = '#fb5944'
-green = '#b8bb26'
-yellow = '#fabd2f'
-blue = '#83a598'
-magenta = '#d3869b'
-cyan = '#8ec07c'
-white = '#ebdbb2'
-
-[colors.cursor]
-cursor = '#fbf1c7'
-text = '#1c1c1c'
-
-[colors.selection]
-background = '#2a405a'
-text = '#ebdbb2'
+black = "#928374"
+red = "#fb5944"
+green = "#b8bb26"
+yellow = "#fabd2f"
+blue = "#83a598"
+magenta = "#d3869b"
+cyan = "#8ec07c"
+white = "#ebdbb2"
 
 [font]
-size = 12
-
-[font.bold]
-family = "Inconsolata"
-style = "Bold"
-
-[font.bold_italic]
-family = "Inconsolata"
-style = "Bold Italic"
-
-[font.italic]
-family = "Inconsolata"
-style = "Italic"
-
-[font.normal]
-family = "Inconsolata"
-style = "Regular"
+size = 9.4
+# size = 15.4 # for WSL Ubuntu
+normal = { family = "Hack", style = "Regular" }
+bold = { family = "Hack", style = "Bold" }
+italic = { family = "Hack", style = "Italic" }
+bold_italic = { family = "Hack", style = "Bold Italic" }
 
 [window]
-decorations = "none"
+decorations = "None"
 opacity = 1.0
 startup_mode = "Maximized"
+padding = { x = 4, y = 4 }
 
-[window.padding]
-x = 4
-y = 4
+# for WSL Ubuntu
+# [terminal]
+# shell = { program = "wsl.exe", args = ["-d", "Ubuntu", "--cd", "~"] }
