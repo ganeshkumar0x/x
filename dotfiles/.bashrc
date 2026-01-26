@@ -11,9 +11,16 @@ export HISTFILESIZE=100000
 export HISTCONTROL=ignoreboth
 
 # Shell options
+set -o vi
 set -o ignoreeof
 shopt -s histappend
 shopt -s autocd
+
+# Vi mode settings
+bind 'set keyseq-timeout 0'
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string \1\e[6 q\2'
+bind 'set vi-cmd-mode-string \1\e[2 q\2'
 
 # Aliases
 alias ls='ls --color=auto'
