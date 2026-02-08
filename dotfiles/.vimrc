@@ -31,12 +31,15 @@ set mouse=a
 
 " Auto-Save and Code Run Bindings
 set autowrite
-autocmd FileType python nnoremap <F5> :w<CR>:!clear; python3 %<CR>
-autocmd FileType c nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && cc % -o compiled_code/%:r && compiled_code/%:r<CR>
-autocmd FileType cpp nnoremap <F5> :w<CR>:!clear && mkdir -p compiled_code && g++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result % -o compiled_code/%:r && compiled_code/%:r<CR>
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:!clear; python3 %<CR>
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!clear && mkdir -p compiled_code && cc % -o compiled_code/%:r && compiled_code/%:r<CR>
+autocmd FileType cpp nnoremap <buffer> <F5> :w<CR>:!clear && mkdir -p compiled_code && g++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result % -o compiled_code/%:r && compiled_code/%:r<CR>
 
 " Cursor Settings
-set ttimeout ttimeoutlen=0 ttyfast
+set ttimeout ttimeoutlen=0
+let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
+let &t_EI = "\e[2 q"
 
 " Backspace Behavior
 set backspace=indent,eol,start
@@ -56,7 +59,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'github/copilot.vim'
-Plug 'DanBradbury/copilot-chat.vim'
 call plug#end()
 
 " Theme and Colors
@@ -67,8 +69,3 @@ colorscheme torte
 " Utility Mappings
 nnoremap <silent> <F9> :%s/\s\+$//e<Bar>echo "Trailing whitespaces removed"<CR>
 nnoremap <F7> :FZF ~<CR>
-
-" Copilot Integration
-command! CC CopilotChatOpen
-cabbrev cc CC
-vnoremap <Space>i <Plug>CopilotChatAddSelection
