@@ -1,0 +1,71 @@
+# .cwmrc
+
+# Appearance
+fontname                "Hack:pixelsize=20:bold"
+sticky                  yes
+borderwidth             0
+gap                     5 5 5 5
+htile                   50
+vtile                   50
+moveamount              5
+color font              "grey"
+color selfont           "white"
+color menubg            "black"
+color menufg            "royalblue"
+
+# Bindings
+unbind-key              all
+unbind-mouse            all
+
+# Mouse
+bind-mouse 4-1          window-move
+bind-mouse 4-3          window-resize
+
+# Groups
+bind-key 4-1            group-only-1
+bind-key 4-2            group-only-2
+bind-key 4-3            group-only-3
+bind-key 4-4            group-only-4
+bind-key 4S-1           window-movetogroup-1
+bind-key 4S-2           window-movetogroup-2
+bind-key 4S-3           window-movetogroup-3
+bind-key 4S-4           window-movetogroup-4
+
+# Windows
+bind-key 4-c            window-close
+bind-key 4-h            window-hide
+bind-key 4-f            window-fullscreen
+bind-key 4-m            window-maximize
+bind-key 4-t            window-htile
+bind-key 4S-t           window-vtile
+bind-key 4-j            window-cycle
+bind-key 4-k            window-rcycle
+
+# Launchers
+bind-key 4-d            menu-cmd
+bind-key 4-space        menu-exec
+bind-key 4-w            menu-window
+bind-key 4-b            firefox
+bind-key 4-s            alacritty
+
+# Hardware
+bind-key XF86AudioRaiseVolume   "amixer set Master 5%+"
+bind-key XF86AudioLowerVolume   "amixer set Master 5%-"
+bind-key XF86AudioMute          "amixer set Master toggle"
+bind-key XF86MonBrightnessUp    "brightnessctl set +5%"
+bind-key XF86MonBrightnessDown  "brightnessctl set 5%-"
+
+# Status
+bind-key 4S-i "sh -c 'printf \" W:%s | %s | B%s:%s%% | %s \\n\" \"`iwgetid -r || echo off`\" \"`amixer get Master | awk -F\"[][]\" \"/%/ {if(\\$6==\\\"off\\\" || \\$4==\\\"off\\\") {print \\\"V-:\\\"\\$2} else {print \\\"V+:\\\"\\$2}; exit}\"`\" \"`awk \"{print (\\$1==\\\"Discharging\\\" ? \\\"-\\\" : \\\"+\\\")}\" /sys/class/power_supply/BAT0/status`\" \"`cat /sys/class/power_supply/BAT0/capacity`\" \"`date \"+%b-%d %a | %H:%M\"`\" | dzen2 -p 3 -x 1315 -y 5 -w 600 -h 32 -ta c -fn \"Hack-12:bold\" -bg black -fg grey'"
+
+# Screenshots
+command screen-shoot    "sh -c 'mkdir -p /home/$USER/Downloads/screenshots && scrot \"/home/$USER/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png\"'"
+command window-shoot    "sh -c 'mkdir -p /home/$USER/Downloads/screenshots && scrot -u \"/home/$USER/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png\"'"
+command area-shoot      "sh -c 'mkdir -p /home/$USER/Downloads/screenshots && scrot -s \"/home/$USER/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png\"'"
+
+# System
+command reboot          "xterm -bg black -fg grey -e \"sudo reboot\""
+command poweroff        "xterm -bg black -fg grey -e \"sudo poweroff\""
+bind-key 4S-l           "i3lock -c 000000"
+bind-key 4S-r           restart
+bind-key 4S-q           quit
