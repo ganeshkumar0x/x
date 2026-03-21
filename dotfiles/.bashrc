@@ -37,8 +37,8 @@ alias m='tmux'
 eval "$(fzf --bash)"
 
 # Auto-Tmux
-if [[ $- == *i* ]] && [[ -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
-    exec tmux
+if [[ $- == *i* && -z "$TMUX" && "$TERM" != "linux" ]] && command -v tmux >/dev/null 2>&1; then
+    tmux
 fi
 
 # Welcome
