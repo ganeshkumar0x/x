@@ -1,17 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # sys_setup.sh
 
-# Disable lightdm if you're using startx instead of a display manager
-# sudo systemctl disable lightdm
+set -euo pipefail
 
-# Edit GRUB config and update (for disabling graphical boot, etc.)
-# sudo vim /etc/default/grub
-# sudo update-grub
-
-echo "Updating package lists..."
 sudo apt update
 
-echo "Installing stable suite packages..."
 sudo apt install -y \
     alacritty \
     alsa-utils \
@@ -41,10 +34,9 @@ sudo apt install -y \
     xcompmgr \
     xinit \
     xinput \
-    xorg \
-    xterm
+    xorg
 
-# Create x symlink
-sudo ln -sf "$(which startx)" /usr/bin/x
+STARTX_PATH="$(command -v startx)"
+sudo ln -sf "$STARTX_PATH" /usr/bin/x
 
-echo "System setup complete."
+echo "Done"
