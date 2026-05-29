@@ -26,5 +26,5 @@ alias m='tmux'
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash)"
 
 if [[ $- == *i* && -z "${TMUX:-}" && "${TERM:-}" != "linux" ]] && command -v tmux >/dev/null 2>&1; then
-    exec tmux
+    tmux
 fi
