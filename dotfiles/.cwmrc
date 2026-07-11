@@ -48,7 +48,7 @@ bind-key XF86AudioMute          "amixer set Master toggle"
 bind-key XF86MonBrightnessUp    "brightnessctl set +5%"
 bind-key XF86MonBrightnessDown  "brightnessctl set 5%-"
 
-bind-key 4S-i "sh -c 'printf \" W:%s | %s | B%s:%s%% | %s \\n\" \"`iw dev wlan0 link 2>/dev/null | awk -F\"SSID: \" \"/SSID:/ {print \\$2; f=1} END {if(!f) print \\\"off\\\"}\"`\" \"`amixer get Master | awk -F\"[][]\" \"/%/ {if(\\$6==\\\"off\\\" || \\$4==\\\"off\\\") {print \\\"V-:\\\"\\$2} else {print \\\"V+:\\\"\\$2}; exit}\"`\" \"`awk \"{print (\\$1==\\\"Discharging\\\" ? \\\"-\\\" : \\\"+\\\")}\" /sys/class/power_supply/BAT0/status`\" \"`cat /sys/class/power_supply/BAT0/capacity`\" \"`date \"+%b-%d %a | %H:%M\"`\" | dzen2 -p 3 -x 1315 -y 5 -w 600 -h 32 -ta c -fn \"Hack-12:bold\" -bg black -fg grey'"
+bind-key 4S-i "sh -c 'printf \" W:%s | %s | B%s:%s%% | %s \\n\" \"`/sbin/iw dev wlan0 link 2>/dev/null | awk -F\"SSID: \" \"/SSID:/ {print \\$2; f=1} END {if(!f) print \\\"off\\\"}\"`\" \"`amixer get Master | awk -F\"[][]\" \"/%/ {if(\\$6==\\\"off\\\" || \\$4==\\\"off\\\") {print \\\"V-:\\\"\\$2} else {print \\\"V+:\\\"\\$2}; exit}\"`\" \"`awk \"{print (\\$1==\\\"Discharging\\\" ? \\\"-\\\" : \\\"+\\\")}\" /sys/class/power_supply/BAT0/status`\" \"`cat /sys/class/power_supply/BAT0/capacity`\" \"`date \"+%b-%d %a | %H:%M\"`\" | dzen2 -p 3 -x 1315 -y 5 -w 600 -h 32 -ta c -fn \"Hack-12:bold\" -bg black -fg grey'"
 
 command screen-shoot    "sh -c 'mkdir -p \"$HOME/Downloads/screenshots\" && scrot \"$HOME/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png\"'"
 command window-shoot    "sh -c 'mkdir -p \"$HOME/Downloads/screenshots\" && scrot -u \"$HOME/Downloads/screenshots/%d-%m-%Y_%H-%M-%S.png\"'"
