@@ -13,7 +13,6 @@ sudo apt install -y \
     build-essential \
     curl \
     cwm \
-    dzen2 \
     firefox-esr \
     fonts-hack \
     fzf \
@@ -44,12 +43,12 @@ printf "[General]\nEnableNetworkConfiguration=true\n" | sudo tee /etc/iwd/main.c
 
 sudo systemctl enable --now iwd
 sudo systemctl enable --now systemd-resolved
-sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo ln -sfnT /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub
 sudo update-grub
 
 STARTX_PATH="$(command -v startx)"
-sudo ln -sf "$STARTX_PATH" /usr/bin/x
+sudo ln -sfnT "$STARTX_PATH" /usr/bin/x
 
 echo "Done"

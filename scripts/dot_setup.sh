@@ -22,7 +22,7 @@ for file in "${FILES[@]}"; do
     dest="$HOME/$file"
 
     if [[ -e "$src" ]]; then
-        ln -sfn "$src" "$dest"
+        ln -sfnT "$src" "$dest"
         echo "$dest -> $src"
     else
         echo "missing: $src" >&2
@@ -33,7 +33,7 @@ ALACRITTY_DIR="$HOME/.config/alacritty"
 mkdir -p "$ALACRITTY_DIR"
 
 if [[ -e "$DOTFILES_DIR/alacritty.toml" ]]; then
-    ln -sfn "$DOTFILES_DIR/alacritty.toml" "$ALACRITTY_DIR/alacritty.toml"
+    ln -sfnT "$DOTFILES_DIR/alacritty.toml" "$ALACRITTY_DIR/alacritty.toml"
     echo "$ALACRITTY_DIR/alacritty.toml -> $DOTFILES_DIR/alacritty.toml"
 else
     echo "missing: $DOTFILES_DIR/alacritty.toml" >&2

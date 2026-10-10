@@ -12,8 +12,6 @@ shopt -s histappend
 
 alias ls='ls --color=auto'
 alias ll='ls -alh'
-alias rm3='rm -rf -- "$HOME/.cache" "$HOME/.viminfo"'
-alias m='tmux'
 
 [ -f /etc/bash_completion ] && . /etc/bash_completion
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash)"
